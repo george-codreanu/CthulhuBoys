@@ -44,6 +44,9 @@ public class TestData {
     public static final String RO_OBLIGATORY_FIELD = "Acest camp este obligatoriu.";
     public static final String RO_COUNTRY_LABEL = "Tara expediere";
     public static final String RO_COUNTRY_FIELD = "Introdu tara de unde primesti banii\n" + "e.g: Statele Unite, Germania, Romania, etc";
+    public static final String RO_TC = "Termeni si conditii";
+    public static final String RO_WU_ERROR_MESSAGE = "Acest camp este obligatoriu.";
+    public static final String RO_RECEIVE_MONEY = "Primeste bani";
 
 
     // -------------------------------------------------------------------- MENU STRINGS

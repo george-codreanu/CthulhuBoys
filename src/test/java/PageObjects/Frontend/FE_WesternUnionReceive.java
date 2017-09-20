@@ -55,8 +55,7 @@ public class FE_WesternUnionReceive extends MainPage {
     @FindBy(css = "label.payments--label.fleft")
     private WebElement mtcnLabel;
 
-
-    @FindBy(xpath = "//*[@id=\"main\"]/div[3]/div/div/div[2]/div/div[1]/div/div[3]/div/div/div/div/ui-raiffeisen-western-union-ng/div/div[2]/div/div/div/ui-raiffeisen-western-union-details-ng/div[2]/ui-raiffeisen-payments-input-description-ng/form/div/div[2]/div/div/label")
+    @FindBy(css = "label[class='payments-descriptionInputLabel ng-binding ng-scope']")
     private WebElement mtcnField;
 
     @FindBy(css = "div.accountsList-icon.western-union.tooltip.westernUnion-tooltip")
@@ -78,10 +77,39 @@ public class FE_WesternUnionReceive extends MainPage {
     private WebElement cancelButton;
 
     @FindBy(css = "a.payments-action--later")
-    private WebElement TCButton;
+    private WebElement termsCondButton;
 
     @FindBy(css = "button.button")
-    private WebElement ReceiveButton;
+    private WebElement receiveButton;
+
+    @FindBy(css = "div.payments-field.payments-error > p.payments-error-label.cf > span")
+    private WebElement firstErrorMessage;
+
+    @FindBy(css = "div.payments-descriptionInput.cf > p.payments-error-label.cf > span")
+    private WebElement secondErrorMessage;
+
+    @FindBy(css = "div.payments-search.payments-typeahead > p.payments-error-label.cf > span")
+    private WebElement thirdErrorMessage;
+
+    @FindBy(css = "h3")
+    private WebElement willReceiveLabel;
+
+    @FindBy(css = "ul > li:nth-of-type(1) > label")
+    private WebElement fromAccountLabel;
+
+    @FindBy(css = "ul > li:nth-of-type(1) > p > strong" )
+    private WebElement fromAccountFirstField;
+
+    @FindBy(css = "ul > li:nth-of-type(1) > p > span")
+    private WebElement fromAccountSecondField;
+
+    @FindBy(css = "ul > li:nth-of-type(2) > label")
+    private WebElement toAccountLabel;
+
+    @FindBy(css = "[name=\"amount\"]")
+    private WebElement sumField;
+
+
 
 
     //-------------------------------------- Methods
@@ -149,5 +177,54 @@ public class FE_WesternUnionReceive extends MainPage {
                CommonTask.getText(countryFieldSecondLabel,"Country field second row");
 
     }
+    public String getTCButtonText(){
+        return CommonTask.getText(termsCondButton,"T&C button");
+    }
+    public String getReceiveButtonText(){
+        return CommonTask.getText(receiveButton,"Receive button");
+    }
+    public String getCancelButtonText(){
+        return CommonTask.getText(cancelButton,"Cancel button");
+    }
 
+    public String getFirstErrorMessage(){
+        return CommonTask.getText(firstErrorMessage,"First error message field");
+    }
+
+    public String getSecondErrorMessage(){
+        return CommonTask.getText(secondErrorMessage,"Seccond error message");
+    }
+
+    public void clickReceive(){
+        receiveButton.click();
+    }
+
+    public String getThirdErrorMessage(){
+        return CommonTask.getText(thirdErrorMessage,"Third error message");
+    }
+
+    public String getWillReceiveText(){
+        return CommonTask.getText(willReceiveLabel, "'Will receive' label");
+    }
+
+    public String getFromAccText(){
+        return CommonTask.getText(fromAccountLabel,"'From account' label");
+    }
+
+    public String getFromAccFields(){
+        return CommonTask.getText(fromAccountFirstField,"First 'From account' field") + "\n" +
+               CommonTask.getText(fromAccountSecondField,"Second 'From account' field");
+    }
+
+    public String getToAccText(){
+        return CommonTask.getText(toAccountLabel,"'To account' label");
+    }
+
+    public boolean verifyValidation(String input){
+        CommonTask.sendKeys(driver,sumField,input,"Sum field");
+        CommonTask.clickElement(driver,infoTooltipText,"Tooltip button");
+
+        return CommonTask.getText(sumField,"Sum field").equals(input);
+
+    }
 }
