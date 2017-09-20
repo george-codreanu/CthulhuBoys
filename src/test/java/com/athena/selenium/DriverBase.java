@@ -9,6 +9,7 @@ import PageObjects.Frontend.FE_LoginPage;
 import com.athena.selenium.config.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 
@@ -105,7 +106,7 @@ public class DriverBase{
     }
 
 */
-    //@AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public static void closeDriverObjects() {
         for (DriverFactory driverFactory : webDriverThreadPool) {
             driverFactory.quitDriver();
