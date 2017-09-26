@@ -1,6 +1,9 @@
 package PageObjects.Frontend;
 
 import AutomationFramework.CommonTask;
+import AutomationFramework.Log4Test;
+import AutomationFramework.TestData;
+import AutomationFramework.Waiting;
 import PageObjects.MainPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.awt.*;
 import java.util.NoSuchElementException;
 import java.util.Random;
 
@@ -155,6 +159,9 @@ public class FE_WesternUnionReceive extends MainPage {
     @FindBy(css = "ul > li:nth-of-type(4) > label")
     private WebElement mtcnInfoLabel;
 
+    @FindBy(css = "span.payments-counter.fright")
+    private WebElement mtcnCounter;
+
     private String account = "div.payments-hints.payments-hints--more.payments-hints--opened > div:nth-of-type";
     private String accountBalanceList = "> p.fright > strong";
     private String country = "#containerHints > ul > li:nth-of-type";
@@ -163,7 +170,7 @@ public class FE_WesternUnionReceive extends MainPage {
 
     //-------------------------------------- Methods
     public void accessWUreceiveURL (String URL, String URLname){
-        CommonTask.accessDirectLink(driver,URL,WUlabel,URLname);
+        CommonTask.accessDirectLink(driver,URL, WUlabel, URLname);
     }
 
     public String getWUogoText(){
@@ -276,9 +283,14 @@ public class FE_WesternUnionReceive extends MainPage {
         return CommonTask.getAttributeAsText(sumField, "value", "sum field").equals(input);
     }
 
+
+    public void setAmmount(String sum){
+        CommonTask.setInputField(driver, sumField, sum , "Sum Field");
+    }
+
     public void selectAccountWithBalance() {
-        int listlenght = CommonTask.getListSizeAngularCSS(driver,account) -1;
-        int balanceFlag= 1;
+        int listlenght = CommonTask.getListSizeAngularCSS(driver,account) - 1;
+        int balanceFlag = 1;
         while(balanceFlag==1) {
             Random randomAccIndex = new Random();
             int index = randomAccIndex.nextInt(listlenght) +1;
@@ -297,10 +309,11 @@ public class FE_WesternUnionReceive extends MainPage {
     }
 
     public String getDisplayedAccInfoArea(){
-        return CommonTask.getText(displayedAccInfoArea,"Displayed account in info area");
+        Waiting.elementToBeClickable(driver, displayedAccInfoArea, "Displayed account name in info area" );
+        return CommonTask.getText(displayedAccInfoArea, "Displayed account name in info area");
     }
 
-    public String getselectedAccountIBAN(){
+    public String getSelectedAccountIBAN(){
         return CommonTask.getText(selectedAccIBAN,"Selected account iban");
     }
 
@@ -315,12 +328,12 @@ public class FE_WesternUnionReceive extends MainPage {
     }
 
     public String getSumInfoArea(){
-        return CommonTask.getText(infoAreaSum,"Sum from info area");
+        return CommonTask.getText(infoAreaSum,"Sum from info area").replaceAll("[^0-9]", "");
     }
 
     public String getSumFieldAmount(){
         CommonTask.clickElement(driver,mtcnField,"mtcn field");
-        return CommonTask.getAttributeAsText(sumField,"value","Sum field");
+        return CommonTask.getAttributeAsText(sumField,"value","Sum field").replaceAll("[^0-9]", "");
     }
 
     public void selectRandomCountry(){
@@ -345,19 +358,31 @@ public class FE_WesternUnionReceive extends MainPage {
     }
 
     public String getCharsLeft(){
-        String value = CommonTask.getAttributeAsText(mtcnFilled,"value","mtcn field");
+        String value = CommonTask.getAttributeAsText(mtcnFilled, TestData.VALUE, "mtcn field");
         return String.valueOf(value.length());
     }
 
     public Boolean isMtcnErrorDisplayed(String input){
         boolean value;
-        try {value = CommonTask.isDisplayed(receiveButton,"Receive button");}
-        catch (NoSuchElementException e){value = false;}
-        if(input.contentEquals("10") && value == false){
+        try {
+            value = CommonTask.isDisplayed(receiveButton, "Receive button");
+        }
+        catch (NoSuchElementException e){
+            value = false;
+        }
+
+        if(input.contentEquals("10") && !value){
             return true;
         }
         return value;
     }
+
+
+    public boolean isMTCNCounterWorking(int counterStartsAt){
+        return CommonTask.isCounterWorking(driver, mtcnFilled, mtcnCounter, counterStartsAt, "mtcn");
+    }
+
+
 
     public void enterMTCN(String input){
         Actions actions = new Actions(driver);

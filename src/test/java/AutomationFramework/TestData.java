@@ -13,13 +13,22 @@ public class TestData {
     public static final String FE_WU_RECIEVE_URL = FE_BASE_URL + "";
 
 
+    // -------------------------------------------------------------------- USERS
 
     public static final String ADMIN_ACCOUNT = "admin";
     public static final String ADMIN_PASSWORD = "admin";
 
+    public static final String VN_84_VLY = "vn-84-vly";
+    public static final String USER_PASS = "test1234";
+
+
     // -------------------------------------------------------------------- Waiting Time
     public static final int SHORT_WAIT = 10;
     public static final int LONG_WAIT = 20;
+
+
+    // -------------------------------------------------------------------- Waiting Time
+    public static final String VALUE = "value";
 
 
     public static final String FE = "FE";

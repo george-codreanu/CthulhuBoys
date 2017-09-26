@@ -55,11 +55,11 @@ public class DriverBase{
 
     // ------------------------
 
-    public void setUp(String env, String scenarioID, String testTitle) throws Exception{
+    public void setUp(String env, String id, String title) throws Exception{
 
         Log4Test.info("                                                                                                    ");
-        Log4Test.info("------------------- TEST ID : " + scenarioID);
-        Log4Test.info("------------------- TEST TITLE : " + testTitle);
+        Log4Test.info("------------------- TEST ID : " + id);
+        Log4Test.info("------------------- TEST TITLE : " + title);
         //Navigate to QA site
         selectENV(env);
         Log4Test.info("---- User is on Login Page");
@@ -69,11 +69,11 @@ public class DriverBase{
     }
 
 
-    public void setUp(String env, String testTitle, String scenarioID, String username, String password) throws Exception {
+    public void setUp(String env, String id, String title, String username, String password) throws Exception {
 
         Log4Test.info("                                                                                                    ");
-        Log4Test.info("------------------- TEST ID : " + scenarioID);
-        Log4Test.info("------------------- TEST TITLE : " + testTitle);
+        Log4Test.info("------------------- TEST ID : " + id);
+        Log4Test.info("------------------- TEST TITLE : " + title);
 
         selectENV(env);
 
@@ -105,13 +105,13 @@ public class DriverBase{
         getDriver().manage().deleteAllCookies();
     }
 
-*/
+
     @AfterMethod(alwaysRun = true)
     public static void closeDriverObjects() {
         for (DriverFactory driverFactory : webDriverThreadPool) {
             driverFactory.quitDriver();
         }
     }
-
+*/
 
 }

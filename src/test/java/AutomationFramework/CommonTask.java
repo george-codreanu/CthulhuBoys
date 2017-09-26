@@ -17,7 +17,7 @@ public class CommonTask {
         try{
             Log4Test.info("- accessing: " + URLname);
             driver.get(URL);
-            Waiting.visibilityOfElement(driver,element, 50, URLname);
+            Waiting.visibilityOfElement(driver, element, 50, URLname);
         } catch (NoSuchElementException e ){
             Assert.fail(Log4Test.error("Unable to load page"));
         }
@@ -177,7 +177,7 @@ public class CommonTask {
     public static int getListSizeAngularCSS(WebDriver driver, String rootElement){
         int counter =1;
         int flag = 1;
-        while (flag ==1){
+        while (flag == 1){
             String indexElement = rootElement + "(" + String.valueOf(counter+1)+ ")";
 
             try {
@@ -190,4 +190,30 @@ public class CommonTask {
         }
         return counter;
     }
+
+
+    public static Boolean isCounterWorking(WebDriver driver, WebElement inputFieldElement, WebElement counterElement, int counterStartsAt, String elementName){
+
+            boolean counterReflectsRemainingChars = true;
+
+            for (int i = counterStartsAt; i >= 0 && counterReflectsRemainingChars; i--){
+
+                Log4Test.test("Test counter for : " + i + " remaining chars");
+
+                //Get lenght of inputed string
+                int inputStringLenght = counterStartsAt - CommonTask.getAttributeAsText(inputFieldElement, TestData.VALUE, elementName + " field").length();
+
+                //Get counter int value
+                int counterValue = Integer.parseInt(CommonTask.getText(counterElement, elementName+ " counter").replaceAll("[^0-9]", ""));
+
+                //Send new char to input field
+                CommonTask.sendKeys(driver, inputFieldElement, "0", elementName+" field");
+
+                //Compare if counter reflects remaining chars
+                counterReflectsRemainingChars = counterValue == inputStringLenght;
+
+            }
+            return counterReflectsRemainingChars;
+        }
+
 }
