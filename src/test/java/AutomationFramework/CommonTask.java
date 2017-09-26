@@ -1,5 +1,6 @@
 package AutomationFramework;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -69,6 +70,20 @@ public class CommonTask {
             Log4Test.info("- clicking element : " + elementName);
             element.click();
         } catch (NoSuchElementException e) {
+            Assert.fail(Log4Test.error("Element is not found"));
+        }
+    }
+
+    public static void clickElementByActions(WebDriver driver, WebElement element, String elementName){
+        try{
+            //Waiting for the element to be available
+            Waiting.elementToBeClickable(driver, element, elementName);
+            //Tap element
+            Log4Test.info("- Moving to and clicking element: "+ elementName);
+            Actions actions = new Actions(driver);
+            actions.moveToElement(element).click().build().perform();
+        }
+        catch (NoSuchElementException e){
             Assert.fail(Log4Test.error("Element is not found"));
         }
     }
@@ -159,4 +174,20 @@ public class CommonTask {
         return driver.getTitle();
     }
 
+    public static int getListSizeAngularCSS(WebDriver driver, String rootElement){
+        int counter =1;
+        int flag = 1;
+        while (flag ==1){
+            String indexElement = rootElement + "(" + String.valueOf(counter+1)+ ")";
+
+            try {
+                driver.findElement(By.cssSelector(indexElement));
+                counter++;
+            }
+            catch (NoSuchElementException e){
+                flag = 0;
+            }
+        }
+        return counter;
+    }
 }

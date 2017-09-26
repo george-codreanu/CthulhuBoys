@@ -2,10 +2,14 @@ package PageObjects.Frontend;
 
 import AutomationFramework.CommonTask;
 import PageObjects.MainPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.NoSuchElementException;
+import java.util.Random;
 
 /**
  * Created by dbrosteanu on 9/19/2017.
@@ -55,8 +59,11 @@ public class FE_WesternUnionReceive extends MainPage {
     @FindBy(css = "label.payments--label.fleft")
     private WebElement mtcnLabel;
 
-    @FindBy(css = "label[class='payments-descriptionInputLabel ng-binding ng-scope']")
+    @FindBy(xpath = "//*[@id=\"main\"]/div[3]/div/div/div[2]/div/div[1]/div/div[3]/div/div/div/div/ui-raiffeisen-western-union-ng/div/div[2]/div/div/div/ui-raiffeisen-western-union-details-ng/div[2]/ui-raiffeisen-payments-input-description-ng/form/div/div[2]/div")
     private WebElement mtcnField;
+
+    @FindBy(css = "input.payments-descriptionInputFields")
+    private WebElement mtcnFilled;
 
     @FindBy(css = "div.accountsList-icon.western-union.tooltip.westernUnion-tooltip")
     private WebElement tooltipButton;
@@ -106,9 +113,51 @@ public class FE_WesternUnionReceive extends MainPage {
     @FindBy(css = "ul > li:nth-of-type(2) > label")
     private WebElement toAccountLabel;
 
+    @FindBy(css ="ul > li:nth-of-type(3) > label")
+    private WebElement toCountrylabel;
+
     @FindBy(css = "[name=\"amount\"]")
     private WebElement sumField;
 
+    @FindBy(css = "ui-raiffeisen-western-union-dropdown-selection-ng > div.payments-hints.payments-hints--more.payments-hints--opened")
+    private WebElement accountList;
+
+    @FindBy(css = "ui-raiffeisen-western-union-dropdown-selection-ng > div.payments-to.contactsList--sidebar > p:nth-of-type(1) > strong")
+    private WebElement selectedAccount;
+
+    @FindBy(css ="ul > li:nth-of-type(2) > p > strong")
+    private WebElement displayedAccInfoArea;
+
+    @FindBy(css ="ui-raiffeisen-western-union-dropdown-selection-ng > div.payments-to.contactsList--sidebar > p:nth-of-type(1) > small")
+    private WebElement selectedAccIBAN;
+
+    @FindBy(css = "ul > li:nth-of-type(2) > p > span")
+    private WebElement displayedIBANinfoArea;
+
+    @FindBy(css = "span.payments-counter.fright")
+    private WebElement mtcnRemainingCharacters;
+
+    @FindBy(css = "ui-raiffeisen-western-union-dropdown-selection-ng > div.payments-to.contactsList--sidebar > p.fright > strong")
+    private WebElement accountBalance;
+
+    @FindBy(xpath = "//*[@id=\"main\"]/div[3]/div/div/div[2]/div/div[1]/div/div[3]/div/div/div/div/ui-raiffeisen-western-union-ng/div/div[2]/div/div/ui-raiffeisen-account-selection-ng/ui-raiffeisen-western-union-dropdown-selection-ng/div[1]")
+    private WebElement listDropdown;
+
+    @FindBy(css ="ul > li:nth-of-type(3) > p > strong")
+    private WebElement infoAreaSum;
+
+    @FindBy(css="#inputTypeahed")
+    private WebElement countryInputField;
+
+    @FindBy(css="div.payments-confirm > ul > li:nth-of-type(4) > p")
+    private WebElement infoAreaCountry;
+
+    @FindBy(css = "ul > li:nth-of-type(4) > label")
+    private WebElement mtcnInfoLabel;
+
+    private String account = "div.payments-hints.payments-hints--more.payments-hints--opened > div:nth-of-type";
+    private String accountBalanceList = "> p.fright > strong";
+    private String country = "#containerHints > ul > li:nth-of-type";
 
 
 
@@ -211,6 +260,8 @@ public class FE_WesternUnionReceive extends MainPage {
         return CommonTask.getText(fromAccountLabel,"'From account' label");
     }
 
+    public String getRemainingCharsLabel(){ return CommonTask.getText(mtcnRemainingCharacters,"MTCN Remaining characters lalbel");}
+
     public String getFromAccFields(){
         return CommonTask.getText(fromAccountFirstField,"First 'From account' field") + "\n" +
                CommonTask.getText(fromAccountSecondField,"Second 'From account' field");
@@ -220,11 +271,98 @@ public class FE_WesternUnionReceive extends MainPage {
         return CommonTask.getText(toAccountLabel,"'To account' label");
     }
 
-    public boolean verifyValidation(String input){
-        CommonTask.sendKeys(driver,sumField,input,"Sum field");
-        CommonTask.clickElement(driver,infoTooltipText,"Tooltip button");
+    public boolean verifyValidation(String input) {
+        CommonTask.sendKeys(driver, sumField, input, "Sum field");
+        return CommonTask.getAttributeAsText(sumField, "value", "sum field").equals(input);
+    }
 
-        return CommonTask.getText(sumField,"Sum field").equals(input);
+    public void selectAccountWithBalance() {
+        int listlenght = CommonTask.getListSizeAngularCSS(driver,account) -1;
+        int balanceFlag= 1;
+        while(balanceFlag==1) {
+            Random randomAccIndex = new Random();
+            int index = randomAccIndex.nextInt(listlenght) +1;
+            String elementIndex = "(" + String.valueOf(index)+")";
+            String selectedAccBalance = driver.findElement(By.cssSelector(account + elementIndex + accountBalanceList)).getText().replaceAll("[^0-9]", "");
 
+            if(!selectedAccBalance.equals("000")){
+                balanceFlag =0;
+                CommonTask.clickElement(driver,driver.findElement(By.cssSelector(account+elementIndex)),"Random account");
+            }
+        }
+    }
+
+    public String getSelectedAccName(){
+        return CommonTask.getText(selectedAccount,"selected account");
+    }
+
+    public String getDisplayedAccInfoArea(){
+        return CommonTask.getText(displayedAccInfoArea,"Displayed account in info area");
+    }
+
+    public String getselectedAccountIBAN(){
+        return CommonTask.getText(selectedAccIBAN,"Selected account iban");
+    }
+
+    public String getDisplayedIBANinfoArea(){
+        return CommonTask.getText(displayedIBANinfoArea,"Displayed IBAN at info area");
+    }
+
+    public void enterValidAmount(){
+        int totalAmount = Integer.parseInt(accountBalance.getText().replaceAll("[^0-9]", ""));
+        Random randomAmount = new Random();
+        sumField.sendKeys(String.valueOf(randomAmount.nextInt(totalAmount)/100));
+    }
+
+    public String getSumInfoArea(){
+        return CommonTask.getText(infoAreaSum,"Sum from info area");
+    }
+
+    public String getSumFieldAmount(){
+        CommonTask.clickElement(driver,mtcnField,"mtcn field");
+        return CommonTask.getAttributeAsText(sumField,"value","Sum field");
+    }
+
+    public void selectRandomCountry(){
+        CommonTask.clickElementByActions(driver,countryInputField,"Country input field");
+        Random randomCountry = new Random();
+        CommonTask.clickElement(driver,driver.findElement(By.cssSelector(country + "(" + String.valueOf(randomCountry.nextInt(249)+1) +")")),"random country");
+    }
+
+    public String getToCountry(){
+        return CommonTask.getText(toCountrylabel,"'To Country' label");
+    }
+
+    public String getEnteredCountry(){
+        return CommonTask.getAttributeAsText(countryInputField,"value","Country field");
+    }
+    public String getInfoAreaCountry(){
+        return CommonTask.getText(infoAreaCountry,"Info area country");
+    }
+
+    public String getMTCNinfoAreaLabel(){
+        return CommonTask.getText(mtcnInfoLabel,"MTCN info area label");
+    }
+
+    public String getCharsLeft(){
+        String value = CommonTask.getAttributeAsText(mtcnFilled,"value","mtcn field");
+        return String.valueOf(value.length());
+    }
+
+    public Boolean isMtcnErrorDisplayed(String input){
+        boolean value;
+        try {value = CommonTask.isDisplayed(receiveButton,"Receive button");}
+        catch (NoSuchElementException e){value = false;}
+        if(input.contentEquals("10") && value == false){
+            return true;
+        }
+        return value;
+    }
+
+    public void enterMTCN(String input){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(mtcnField).click().build().perform();
+        actions.moveToElement(mtcnField).sendKeys(input).build().perform();
     }
 }
+
