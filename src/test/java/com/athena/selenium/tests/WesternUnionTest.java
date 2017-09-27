@@ -2,9 +2,9 @@ package com.athena.selenium.tests;
 
 import AutomationFramework.Log4Test;
 import AutomationFramework.TestData;
-import PageObjects.Frontend.FE_WesternUnionReceive;
+import PageObjects.Frontend.FE_WesternUnionReceive_Confirm;
+import PageObjects.Frontend.FE_WesternUnionReceive_Input;
 import com.athena.selenium.DriverBase;
-import com.sun.xml.internal.bind.v2.TODO;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -19,7 +19,7 @@ public class WesternUnionTest extends DriverBase{
     public void WU_01_Receive_RO() throws Exception {
 
         WebDriver driver = getDriver();
-        FE_WesternUnionReceive WUReceive = new FE_WesternUnionReceive(driver);
+        FE_WesternUnionReceive_Input WUReceive = new FE_WesternUnionReceive_Input(driver);
 
         setUp(TestData.FE, "WU_01", "Verify Western union - Receive labels" ,TestData.VN_84_VLY, TestData.USER_PASS);
 
@@ -113,7 +113,7 @@ public class WesternUnionTest extends DriverBase{
     public void WU_02_Receive(String sumOfMoney) throws Exception {
 
         WebDriver driver = getDriver();
-        FE_WesternUnionReceive WUReceive = new FE_WesternUnionReceive(driver);
+        FE_WesternUnionReceive_Input WUReceive = new FE_WesternUnionReceive_Input(driver);
 
         setUp(TestData.FE, "WU_02", "Verify Western union - Receive - SUM amount input restrictions", TestData.VN_84_VLY, TestData.USER_PASS);
 
@@ -125,7 +125,7 @@ public class WesternUnionTest extends DriverBase{
     @Test(groups = {TestData.WESTERN_UNION_GROUP})
     public void WU_03_Receive() throws  Exception{
         WebDriver driver = getDriver();
-        FE_WesternUnionReceive WUReceive = new FE_WesternUnionReceive(driver);
+        FE_WesternUnionReceive_Input WUReceive = new FE_WesternUnionReceive_Input(driver);
 
         setUp(TestData.FE, "WU_03", "Verify that info area is updated when the user inputs data.", TestData.VN_84_VLY, TestData.USER_PASS);
 
@@ -154,7 +154,7 @@ public class WesternUnionTest extends DriverBase{
     @Test(groups = {TestData.WESTERN_UNION_GROUP})
     public void WU_04_Receive() throws Exception{
         WebDriver driver = getDriver();
-        FE_WesternUnionReceive WUReceive = new FE_WesternUnionReceive(driver);
+        FE_WesternUnionReceive_Input WUReceive = new FE_WesternUnionReceive_Input(driver);
 
         setUp(TestData.FE, "WU_04", "Verify that remaining characters at the MTCN field is updated when entering strings", TestData.VN_84_VLY, TestData.USER_PASS);
 
@@ -162,6 +162,29 @@ public class WesternUnionTest extends DriverBase{
         WUReceive.accessWUreceiveURL(TestData.ENV + TestData.FE_WU_RECEIVE_URL, "WU Receive page");
 
         Assert.assertTrue(WUReceive.isMTCNCounterWorking(10), "Counter is broken");
+    }
+
+
+
+    @Test(groups = {TestData.WESTERN_UNION_GROUP})
+    public void WU_05_Receive_RO() throws Exception{
+
+        WebDriver driver = getDriver();
+        FE_WesternUnionReceive_Input WUReceive_Input = new FE_WesternUnionReceive_Input(driver);
+        FE_WesternUnionReceive_Confirm WUReceive_Confirm = new FE_WesternUnionReceive_Confirm(driver);
+
+        setUp(TestData.FE, "WU_05","Verify confirmation page labels",TestData.VN_84_VLY,TestData.USER_PASS);
+
+        Log4Test.info("Filling form in order to proceed to confirmation page");
+        WUReceive_Input.accessWUreceiveURL(TestData.ENV + TestData.FE_WU_RECEIVE_URL, "WU Receive page");
+        WUReceive_Input.completeFormWithValidInput("1234567890", "Germania");
+        WUReceive_Input.clickReceive();
+
+        Log4Test.info("Assert WU logo and label");
+        softAssert.assertTrue(WUReceive_Confirm.isWUlogoDisplayed(),"WU Logo not displayed");
+
+        softAssert.assertAll();
+
     }
 
 
