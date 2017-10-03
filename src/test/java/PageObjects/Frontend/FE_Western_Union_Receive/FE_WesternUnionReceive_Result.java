@@ -1,4 +1,4 @@
-package PageObjects.Frontend;
+package PageObjects.Frontend.FE_Western_Union_Receive;
 
 import AutomationFramework.CommonTask;
 import AutomationFramework.TestData;

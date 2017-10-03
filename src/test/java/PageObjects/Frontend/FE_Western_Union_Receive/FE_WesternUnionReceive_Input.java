@@ -1,4 +1,4 @@
-package PageObjects.Frontend;
+package PageObjects.Frontend.FE_Western_Union_Receive;
 
 import AutomationFramework.CommonTask;
 import AutomationFramework.TestData;
@@ -302,8 +302,6 @@ public class FE_WesternUnionReceive_Input extends MainPage {
             int index = randomAccIndex.nextInt(listlenght);
             String elementIndex = "(" + String.valueOf(index)+")";
             String selectedAccBalance = driver.findElement(By.cssSelector(account + elementIndex + accountBalanceList)).getText().replaceAll("[^0-9]", "");
-
-            System.out.println(Integer.parseInt(selectedAccBalance));
             if(Integer.parseInt(selectedAccBalance) >1){
                 balanceFlag =0;
                 CommonTask.clickElement(driver,driver.findElement(By.cssSelector(account+elementIndex)),"Random account");
@@ -403,8 +401,6 @@ public class FE_WesternUnionReceive_Input extends MainPage {
         enterValidAmount();
         enterMTCN(mtcn);
         selectRandomCountry();
-        //CommonTask.clickElementByActions(driver,countryInputField,"Country input field");
-        //CommonTask.sendKeys(driver,countryInputField,country,"Country field");
         countryInputField.sendKeys(Keys.RETURN);
     }
 
