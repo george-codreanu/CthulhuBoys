@@ -10,7 +10,6 @@ public class TestData {
     public static final String FE_WU_RECEIVE_URL = "/portalserver/raiffeisen-portal/western-union/initiaza-transfer";
 
 
-    public static final String FE_WU_RECIEVE_URL = FE_BASE_URL + "";
 
 
     // -------------------------------------------------------------------- USERS
@@ -42,6 +41,7 @@ public class TestData {
 
     // -------------------------------------------------------------------- Western Union
     public static final String WESTERN_UNION = "Western Union";
+    public static final String WU_VALID_MTCN = "0000000000";
 
     //---EN
 
@@ -56,7 +56,9 @@ public class TestData {
     public static final String RO_TC = "Termeni si conditii";
     public static final String RO_WU_ERROR_MESSAGE = "Acest camp este obligatoriu.";
     public static final String RO_RECEIVE_MONEY = "Primeste bani";
-
+    public static final String RO_CONFIRM_PAGE_FIRST_INFO = "Urmeaza sa primesti bani prin Western Union";
+    public static final String RO_CONFIRM_PAGE_SECOND_INFO = "Informatiile tale inregistrare la Raiffeisen Bank, solicitate de Western Union pentru transferuri";
+    public static final String RO_CONFIRM_PAGE_THIRD_INFO = "In cazul in care informatiile tale personale sunt incomplete, te rugam sa accesezi meniul Setari > Date personale sau poti merge la orice agentie Raiffeisen Bank, sau poti utiliza serviciul de Suport Clienti apeland numarul 021.306 55 55 (apelabil din orice retea 24/7)";
 
     // -------------------------------------------------------------------- MENU STRINGS
 

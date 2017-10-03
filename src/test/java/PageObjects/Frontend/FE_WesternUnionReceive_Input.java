@@ -23,6 +23,9 @@ public class FE_WesternUnionReceive_Input extends MainPage {
         super(passedDriver);
     }
 
+    public String inputData[] = new String[6];
+
+
     @FindBy(css = "#btn-append-to-single-button > strong")
     private WebElement firstCurrencyFirstField;
 
@@ -83,13 +86,16 @@ public class FE_WesternUnionReceive_Input extends MainPage {
     @FindBy(css = "div.payments-typeaheadSearch--label > p > small")
     private WebElement countryFieldSecondLabel;
 
+    @FindBy(css = "div.payments-typeaheadSearch--label > p")
+    private WebElement countryFieldBox;
+
     @FindBy(css = "u")
     private WebElement cancelButton;
 
     @FindBy(css = "a.payments-action--later")
     private WebElement termsCondButton;
 
-    @FindBy(xpath = "/html/body/div[1]/div[3]/div/div/div[2]/div/div[1]/div/div[3]/div/div/div/div/ui-raiffeisen-western-union-ng/div/div[2]/div/div/div/ui-raiffeisen-western-union-details-ng/div[2]/div/button")
+    @FindBy(css = "#main > div.bp-container.template-containerResponsive.contentContainer > div > div > div.raiffeisenGrid-column.raiffeisenGrid-column--cols.columns-9.contentGrid-column--contentColumn > div > div.bp-container.bp-ui-dragRoot.bp-manageableArea.--area.bp-area > div > div.bp-widget-body.ng-scope > div > div > div > div > ui-raiffeisen-western-union-ng > div > div.payments-container > div > div > div > ui-raiffeisen-western-union-details-ng > div.ng-scope > div > button")
     private WebElement receiveButton;
 
     @FindBy(css = "div.payments-field.payments-error > p.payments-error-label.cf > span")
@@ -248,8 +254,11 @@ public class FE_WesternUnionReceive_Input extends MainPage {
     }
 
     public void clickReceive(){
-       CommonTask.clickElementByActions(driver,receiveButton,"Receive button");
-      //  receiveButton.click();
+         //CommonTask.clickElementByActions(driver,receiveButton,"Receive button");
+       // Waiting.elementToBeClickable(driver,receiveButton,"laba");
+        //((JavascriptExecutor)driver).executeScript("arguments[0].click();",receiveButton);
+        receiveButton.sendKeys(Keys.ENTER);
+      //  driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
     }
 
     public String getThirdErrorMessage(){
@@ -281,7 +290,7 @@ public class FE_WesternUnionReceive_Input extends MainPage {
     }
 
 
-    public void setAmmount(String sum){
+    public void setAmount(String sum){
         CommonTask.setInputField(driver, sumField, sum , "Sum Field");
     }
 
@@ -294,7 +303,8 @@ public class FE_WesternUnionReceive_Input extends MainPage {
             String elementIndex = "(" + String.valueOf(index)+")";
             String selectedAccBalance = driver.findElement(By.cssSelector(account + elementIndex + accountBalanceList)).getText().replaceAll("[^0-9]", "");
 
-            if(!selectedAccBalance.equals("000")){
+            System.out.println(Integer.parseInt(selectedAccBalance));
+            if(Integer.parseInt(selectedAccBalance) >1){
                 balanceFlag =0;
                 CommonTask.clickElement(driver,driver.findElement(By.cssSelector(account+elementIndex)),"Random account");
             }
@@ -329,12 +339,14 @@ public class FE_WesternUnionReceive_Input extends MainPage {
     }
 
     public String getSumFieldAmount(){
+        String value = "";
         CommonTask.clickElement(driver,mtcnField,"mtcn field");
-        return CommonTask.getAttributeAsText(sumField,"value","Sum field").replaceAll("[^0-9]", "");
+        value = String.valueOf(Integer.parseInt(CommonTask.getAttributeAsText(sumField,"value","Sum field").replaceAll("[^0-9]", ""))/100);
+        return value;
     }
 
     public void selectRandomCountry(){
-        CommonTask.clickElementByActions(driver,countryInputField,"Country input field");
+        CommonTask.clickElement(driver,countryFieldBox,"Country type area");
         Random randomCountry = new Random();
         CommonTask.clickElementByActions(driver,driver.findElement(By.cssSelector(country + "(" + String.valueOf(randomCountry.nextInt(249)+1) +")")),"random country");
     }
@@ -385,14 +397,26 @@ public class FE_WesternUnionReceive_Input extends MainPage {
         actions.moveToElement(mtcnField).sendKeys(input).build().perform();
     }
 
-    public void completeFormWithValidInput(String mtcn, String country){
+    public void completeFormWithValidInput(String mtcn){
 
         selectAccountWithBalance();
         enterValidAmount();
         enterMTCN(mtcn);
-        CommonTask.clickElementByActions(driver,countryInputField,"Country input field");
-        CommonTask.sendKeys(driver,countryInputField,country,"Country field");
+        selectRandomCountry();
+        //CommonTask.clickElementByActions(driver,countryInputField,"Country input field");
+        //CommonTask.sendKeys(driver,countryInputField,country,"Country field");
         countryInputField.sendKeys(Keys.RETURN);
+    }
+
+    public void stockInputData(){
+        if(selectedAccount.isDisplayed()){
+        inputData[0] = CommonTask.getText(selectedAccount,"Selected account");
+        }
+        inputData[1] = CommonTask.getText(selectedAccIBAN,"Selected Account IBAN");
+        inputData[2] = CommonTask.getText(firstCurrencyFirstField,"Currency");
+        inputData[3] = CommonTask.getAttributeAsText(mtcnFilled,"value","Filled mtcn");
+        inputData[4] = getEnteredCountry();
+        inputData[5] = getSumFieldAmount();
     }
 
 }

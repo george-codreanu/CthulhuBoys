@@ -100,18 +100,18 @@ public class DriverBase{
 
 
 
-    /*    @AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public static void clearCookies() throws Exception {
         getDriver().manage().deleteAllCookies();
     }
 
 
-    @AfterMethod(alwaysRun = true)
+   // @AfterMethod(alwaysRun = true)
     public static void closeDriverObjects() {
         for (DriverFactory driverFactory : webDriverThreadPool) {
             driverFactory.quitDriver();
         }
     }
-*/
+
 
 }

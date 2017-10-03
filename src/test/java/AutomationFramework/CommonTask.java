@@ -1,9 +1,6 @@
 package AutomationFramework;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
@@ -81,7 +78,8 @@ public class CommonTask {
             //Tap element
             Log4Test.info("- Moving to and clicking element: "+ elementName);
             Actions actions = new Actions(driver);
-            actions.moveToElement(element).click().build().perform();
+            //actions.moveToElement(element).click().build().perform();
+            element.sendKeys(Keys.ENTER);
         }
         catch (NoSuchElementException e){
             Assert.fail(Log4Test.error("Element is not found"));
