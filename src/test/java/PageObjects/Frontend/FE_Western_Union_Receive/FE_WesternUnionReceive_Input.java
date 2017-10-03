@@ -254,11 +254,8 @@ public class FE_WesternUnionReceive_Input extends MainPage {
     }
 
     public void clickReceive(){
-         //CommonTask.clickElementByActions(driver,receiveButton,"Receive button");
-       // Waiting.elementToBeClickable(driver,receiveButton,"laba");
-        //((JavascriptExecutor)driver).executeScript("arguments[0].click();",receiveButton);
+       //needs to be changed to .click
         receiveButton.sendKeys(Keys.ENTER);
-      //  driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
     }
 
     public String getThirdErrorMessage(){

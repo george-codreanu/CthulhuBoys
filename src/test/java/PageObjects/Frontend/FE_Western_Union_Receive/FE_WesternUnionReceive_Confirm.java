@@ -173,8 +173,6 @@ public class FE_WesternUnionReceive_Confirm extends MainPage {
     public void stockConfirmData(){
         confirmData[0] = CommonTask.getText(accountName,"Account name");
         confirmData[1] = CommonTask.getText(IBAN, "IBAN");
-        //confirmData[2] = CommonTask.getText(currency,"Currency");
-        //onfirmData[2] = currency.getAttribute("innerHTML").replaceAll("&nbsp;","");
         confirmData[2] = CommonTask.getAttributeAsText(currency,"innerHTML","Currency").replaceAll("&nbsp;","");
         confirmData[3] = CommonTask.getText(mtcn, "MTCN number");
         confirmData[4] = CommonTask.getText(country, "Country");

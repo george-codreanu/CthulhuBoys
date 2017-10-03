@@ -1,9 +1,10 @@
 package PageObjects.Frontend.FE_Western_Union_Receive;
 
 import AutomationFramework.CommonTask;
+import AutomationFramework.Log4Test;
 import AutomationFramework.TestData;
-import AutomationFramework.Waiting;
 import PageObjects.MainPage;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,6 +36,9 @@ public class FE_WesternUnionReceive_Result extends MainPage {
     @FindBy(css ="h2.payments--title")
     private WebElement WUResulPageTitle;
 
+    @FindBy(css ="div.result-block--succes > p > strong")
+    private WebElement successMessage;
+
 
     public boolean isTransactionHistoryButtonDisplayed(){
         return CommonTask.isElementEnabledAndDisplayed(transactionHistoryButton,"Transaction history button");
@@ -46,18 +50,32 @@ public class FE_WesternUnionReceive_Result extends MainPage {
 
     public boolean isProofPaymentButtonDisplayed(String mtcn){
         boolean value;
-
-            value = proofPaymentButton.isDisplayed();
-
-            if(!mtcn.contentEquals(TestData.WU_VALID_MTCN)){
-                value = true;
+            try {
+                value = proofPaymentButton.isDisplayed();
+            }
+            catch (NoSuchElementException e){
+                if(!mtcn.contentEquals(TestData.WU_VALID_MTCN)){
+                    value = true;
+                }
+                else {
+                    value = false;
+                }
             }
         return value;
     }
 
     public String getErrorText(){
-        Waiting.visibilityOfElement(driver,errorText,"error text");
-        return CommonTask.getText(errorText,"error text");
+
+        String value = "";
+        try{
+           value = errorText.getText();
+        }
+        catch (NoSuchElementException e){
+            Log4Test.info("Error message not displayed, checking for success message");
+            value = CommonTask.getText(successMessage,"success message");
+
+        }
+        return value;
     }
 
     public String getTransactionHistoryButtonLabel(){
