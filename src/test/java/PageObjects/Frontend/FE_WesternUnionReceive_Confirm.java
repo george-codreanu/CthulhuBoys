@@ -3,6 +3,7 @@ package PageObjects.Frontend;
 import AutomationFramework.CommonTask;
 import AutomationFramework.Waiting;
 import PageObjects.MainPage;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -79,7 +80,7 @@ public class FE_WesternUnionReceive_Confirm extends MainPage {
     @FindBy(css = "ul > li:nth-of-type(2) > p > span")
     private WebElement IBAN;
 
-    @FindBy(css = "span.amount-currency")
+    @FindBy(className = "amount-currency")
     private WebElement currency;
 
     @FindBy(css ="ul > li:nth-of-type(4) > p > strong")
@@ -175,12 +176,16 @@ public class FE_WesternUnionReceive_Confirm extends MainPage {
         confirmData[1] = CommonTask.getText(IBAN, "IBAN");
         //confirmData[2] = CommonTask.getText(currency,"Currency");
         System.out.println(CommonTask.getText(currency,"test"));
-        Waiting.textToBePresentInElement(driver,currency,"RON","waitu de currency");
-        confirmData[2] = CommonTask.getText(currency,"currency");
+        confirmData[2] = currency.getAttribute("innerHTML");
         System.out.println(confirmData[2]);
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        Object aa=executor.executeScript("var items = {}; for (index = 0; index < arguments[0].attributes.length; ++index) { items[arguments[0].attributes[index].name] = arguments[0].attributes[index].value }; return items;", currency);
+        System.out.println(aa.toString());
 
         confirmData[3] = CommonTask.getText(mtcn, "MTCN number");
         confirmData[4] = CommonTask.getText(country, "Country");
         confirmData[5] = String.valueOf(Integer.parseInt(CommonTask.getText(amountAndCurrency,"Sum field").replaceAll("[^0-9]", ""))/100);
+
+        System.out.println("CEAU");
     }
 }
