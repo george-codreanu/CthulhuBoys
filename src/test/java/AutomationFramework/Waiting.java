@@ -100,6 +100,7 @@ public class Waiting {
         }
     }
 
+
     public static void titleIs(WebDriver driver, String title){
         try {
             Log4Test.info("- waiting for title to be : " + title );

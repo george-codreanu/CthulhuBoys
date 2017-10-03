@@ -117,6 +117,8 @@ public class CommonTask {
         return stringValueOfAttribute;
     }
 
+
+
     public static String getText (WebElement element, String elementName) {
         String stringValueOfAttribute = "";
         try {

@@ -187,5 +187,7 @@ public class FE_WesternUnionReceive_Confirm extends MainPage {
         confirmData[5] = String.valueOf(Integer.parseInt(CommonTask.getText(amountAndCurrency,"Sum field").replaceAll("[^0-9]", ""))/100);
 
         System.out.println("CEAU");
+
+
     }
 }

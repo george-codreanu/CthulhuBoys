@@ -330,6 +330,8 @@ public class WesternUnionTest extends DriverBase{
         System.out.println(WUReceive_Input.inputData[5]);
 
         System.out.println("");
+
+
         System.out.println(WUReceive_Confirm.confirmData[0]);
         System.out.println(WUReceive_Confirm.confirmData[1]);
         System.out.println(WUReceive_Confirm.confirmData[2]);

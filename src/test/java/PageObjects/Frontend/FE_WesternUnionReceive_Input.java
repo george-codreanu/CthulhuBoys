@@ -419,5 +419,7 @@ public class FE_WesternUnionReceive_Input extends MainPage {
         inputData[5] = getSumFieldAmount();
     }
 
+
+
 }
 
