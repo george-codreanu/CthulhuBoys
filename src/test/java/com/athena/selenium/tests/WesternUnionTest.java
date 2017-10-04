@@ -2,9 +2,9 @@ package com.athena.selenium.tests;
 
 import AutomationFramework.Log4Test;
 import AutomationFramework.TestData;
-import PageObjects.Frontend.FE_WesternUnionReceive_Confirm;
-import PageObjects.Frontend.FE_WesternUnionReceive_Input;
-import PageObjects.Frontend.FE_WesternUnionReceive_Result;
+import PageObjects.Frontend.FE_Western_Union_Receive.FE_WesternUnionReceive_Confirm;
+import PageObjects.Frontend.FE_Western_Union_Receive.FE_WesternUnionReceive_Input;
+import PageObjects.Frontend.FE_Western_Union_Receive.FE_WesternUnionReceive_Result;
 import com.athena.selenium.DriverBase;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -314,36 +314,29 @@ public class WesternUnionTest extends DriverBase{
 
         setUp(TestData.FE, "WU_07","Verify confirmation page labels",TestData.VN_84_VLY,TestData.USER_PASS);
 
-        Log4Test.info("Filling form in order to proceed to confirmation page");
+
         WUReceive_Input.accessWUreceiveURL(TestData.ENV + TestData.FE_WU_RECEIVE_URL, "WU Receive page");
 
+        Log4Test.info("Filling form in order to proceed to confirmation page");
         WUReceive_Input.completeFormWithValidInput(TestData.WU_VALID_MTCN);
+
+        Log4Test.info("Stocking input page data");
         WUReceive_Input.stockInputData();
         WUReceive_Input.clickReceive();
+
+        Log4Test.info("Stocking confirmation page data");
         WUReceive_Confirm.stockConfirmData();
 
-        System.out.println(WUReceive_Input.inputData[0]);
-        System.out.println(WUReceive_Input.inputData[1]);
-        System.out.println(WUReceive_Input.inputData[2]);
-        System.out.println(WUReceive_Input.inputData[3]);
-        System.out.println(WUReceive_Input.inputData[4]);
-        System.out.println(WUReceive_Input.inputData[5]);
 
-        System.out.println("");
-
-
-        System.out.println(WUReceive_Confirm.confirmData[0]);
-        System.out.println(WUReceive_Confirm.confirmData[1]);
-        System.out.println(WUReceive_Confirm.confirmData[2]);
-        System.out.println(WUReceive_Confirm.confirmData[3]);
-        System.out.println(WUReceive_Confirm.confirmData[4]);
-        System.out.println(WUReceive_Confirm.confirmData[5]);
-
-
-
+        Log4Test.info("Verifying if the confirmation data is valid");
+        softAssert.assertEquals(WUReceive_Confirm.confirmData[0],WUReceive_Input.inputData[0],"Account name is incorrect");
+        softAssert.assertEquals(WUReceive_Confirm.confirmData[1],WUReceive_Input.inputData[1],"IBAN is incorrect");
+        softAssert.assertEquals(WUReceive_Confirm.confirmData[2],WUReceive_Input.inputData[2],"Currency is incorrect");
+        softAssert.assertEquals(WUReceive_Confirm.confirmData[3],WUReceive_Input.inputData[3],"MTCN is incorrect");
+        softAssert.assertEquals(WUReceive_Confirm.confirmData[4],WUReceive_Input.inputData[4],"Country is incorrect");
+        softAssert.assertEquals(WUReceive_Confirm.confirmData[5],WUReceive_Input.inputData[5],"Currency is incorrect");
+        softAssert.assertAll();
     }
 
 }
-
-
 
