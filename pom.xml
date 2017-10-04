@@ -60,16 +60,16 @@
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
             <scope>test</scope>
-                <exclusions>
-                     <exclusion>
-                         <groupId>com.github.detro.ghostdriver</groupId>
-                         <artifactId>phantomjsdriver</artifactId>
-                     </exclusion>
-                     <exclusion>
-                         <groupId>org.seleniumhq.selenium</groupId>
-                         <artifactId>htmlunit-driver</artifactId>
-                    </exclusion>
-                </exclusions>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.github.detro.ghostdriver</groupId>
+                    <artifactId>phantomjsdriver</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>htmlunit-driver</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -77,20 +77,20 @@
             <version>${selenium.version}</version>
         </dependency>
         <dependency>
-                <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>selenium-remote-driver</artifactId>
-                <version>${selenium.version}</version>
-                <scope>test</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.github.detro.ghostdriver</groupId>
-                        <artifactId>phantomjsdriver</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.seleniumhq.selenium</groupId>
-                        <artifactId>htmlunit-driver</artifactId>
-                    </exclusion>
-                </exclusions>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-remote-driver</artifactId>
+            <version>${selenium.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.github.detro.ghostdriver</groupId>
+                    <artifactId>phantomjsdriver</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>htmlunit-driver</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.codeborne</groupId>
@@ -144,11 +144,33 @@
     <profiles>
         <profile>
             <id>Solo</id>
-                <activation>
+            <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>com.lazerycode.jmeter</groupId>
+                        <artifactId>jmeter-maven-plugin</artifactId>
+                        <version>2.2.0</version>
+                        <executions>
+                            <execution>
+                                <id>jmeter-tests</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>jmeter</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <overrideRootLogLevel>debug</overrideRootLogLevel>
+                            <ignoreResultFailures>true</ignoreResultFailures>
+                            <testFilesDirectory>src/test/jmeter</testFilesDirectory>
+                            <resultsFileNameDateFormat>YYY_MM_DD</resultsFileNameDateFormat>
+                            <resultsDirectory>JMeter Scripts/Test_results</resultsDirectory>
+                            <resultsFileFormat>csv</resultsFileFormat>
+                        </configuration>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
