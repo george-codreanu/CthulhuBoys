@@ -292,7 +292,7 @@
                 <intProp name="Assertion.test_type">16</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Check if iban exists for all accounts" enabled="true">
+              <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Check if iban exists for all accounts" enabled="false">
                 <stringProp name="cacheKey"></stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="parameters"></stringProp>
@@ -2226,7 +2226,7 @@ if (json.iban[i] == null) {
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">2</intProp>
+                <intProp name="Assertion.test_type">16</intProp>
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
@@ -4354,12 +4354,12 @@ if (json.iban[i] == null) {
             </elementProp>
             <elementProp name="accCustomID" elementType="Argument">
               <stringProp name="Argument.name">accCustomID</stringProp>
-              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.value">5161502</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="accCustomType" elementType="Argument">
               <stringProp name="Argument.name">accCustomType</stringProp>
-              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.value">20</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>

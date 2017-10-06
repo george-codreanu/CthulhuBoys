@@ -41,7 +41,7 @@
             </elementProp>
             <elementProp name="username" elementType="Argument">
               <stringProp name="Argument.name">username</stringProp>
-              <stringProp name="Argument.value">vn-84-vly</stringProp>
+              <stringProp name="Argument.value">testpf08</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="password" elementType="Argument">
@@ -98,7 +98,7 @@
             <elementProp name="accountType99" elementType="Argument">
               <stringProp name="Argument.name">accountType99</stringProp>
               <stringProp name="Argument.value">10026961</stringProp>
-              <stringProp name="Argument.desc">for acc ballance test (works only on testpf08)</stringProp>
+              <stringProp name="Argument.desc">for acc ballance test (works only on testpf08) {&quot;id&quot;:&quot;${accountType99}&quot;,&quot;typeId&quot;:&quot;99&quot;}</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="------------------------------------------" elementType="Argument">
@@ -292,7 +292,7 @@
                 <intProp name="Assertion.test_type">16</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Check if iban exists for all accounts" enabled="true">
+              <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Check if iban exists for all accounts" enabled="false">
                 <stringProp name="cacheKey"></stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="parameters"></stringProp>
@@ -1782,8 +1782,7 @@ if (json.iban[i] == null) {
 {&quot;id&quot;:&quot;${accIDron}&quot;,&quot;typeId&quot;:&quot;20&quot;},&#xd;
 {&quot;id&quot;:&quot;${accountType26}&quot;,&quot;typeId&quot;:&quot;26&quot;},&#xd;
 {&quot;id&quot;:&quot;${accountType30}&quot;,&quot;typeId&quot;:&quot;30&quot;},&#xd;
-{&quot;id&quot;:&quot;${accountType50}&quot;,&quot;typeId&quot;:&quot;50&quot;},&#xd;
-{&quot;id&quot;:&quot;${accountType99}&quot;,&quot;typeId&quot;:&quot;99&quot;}&#xd;
+{&quot;id&quot;:&quot;${accountType50}&quot;,&quot;typeId&quot;:&quot;50&quot;}&#xd;
 ]</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -1849,22 +1848,13 @@ if (json.iban[i] == null) {
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - type 99 return" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - type 99 return" enabled="false">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="701490920">&quot;id&quot;:&quot;${accountType99}&quot;</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
                 <intProp name="Assertion.test_type">2</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion -  &quot;balance&quot;" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="-947237176"> &quot;balance&quot;</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">16</intProp>
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
@@ -2211,7 +2201,7 @@ if (json.iban[i] == null) {
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - Status 200" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - Status 200" enabled="false">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="49586">200</stringProp>
                 </collectionProp>
@@ -2220,13 +2210,13 @@ if (json.iban[i] == null) {
                 <intProp name="Assertion.test_type">16</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - Not empty" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - Not empty" enabled="false">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="91">[</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">2</intProp>
+                <intProp name="Assertion.test_type">16</intProp>
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
@@ -2425,7 +2415,7 @@ if (json.iban[i] == null) {
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller -  paymentTYpe ${paymentIDcounter} - accountType D" enabled="true">
+            <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller -  paymentTYpe ${paymentIDcounter} - accountType D" enabled="false">
               <boolProp name="LoopController.continue_forever">true</boolProp>
               <stringProp name="LoopController.loops">292</stringProp>
             </LoopController>
@@ -2496,7 +2486,7 @@ if (json.iban[i] == null) {
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller -  paymentTYpe ${paymentIDcounter} - accountType C" enabled="true">
+            <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller -  paymentTYpe ${paymentIDcounter} - accountType C" enabled="false">
               <boolProp name="LoopController.continue_forever">true</boolProp>
               <stringProp name="LoopController.loops">292</stringProp>
             </LoopController>
