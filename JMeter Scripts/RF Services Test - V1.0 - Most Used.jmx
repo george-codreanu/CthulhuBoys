@@ -75,6 +75,67 @@
               <stringProp name="Argument.value">------------------------------------------</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
+            <elementProp name="paymentIBAN_FROM" elementType="Argument">
+              <stringProp name="Argument.name">paymentIBAN_FROM</stringProp>
+              <stringProp name="Argument.value">RO63RZBR0000060005161502</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="paymentIBAN_TO" elementType="Argument">
+              <stringProp name="Argument.name">paymentIBAN_TO</stringProp>
+              <stringProp name="Argument.value">RO40RZBR0000060011185325</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="paymentCurrency" elementType="Argument">
+              <stringProp name="Argument.name">paymentCurrency</stringProp>
+              <stringProp name="Argument.value">RON</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="paymentCurrency_FROM" elementType="Argument">
+              <stringProp name="Argument.name">paymentCurrency_FROM</stringProp>
+              <stringProp name="Argument.value">RON</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="paymentCurrency_TO" elementType="Argument">
+              <stringProp name="Argument.name">paymentCurrency_TO</stringProp>
+              <stringProp name="Argument.value">EUR</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="paymentActionID" elementType="Argument">
+              <stringProp name="Argument.name">paymentActionID</stringProp>
+              <stringProp name="Argument.value">0003</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="paymentAmount" elementType="Argument">
+              <stringProp name="Argument.name">paymentAmount</stringProp>
+              <stringProp name="Argument.value">1.0</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="paymentCif_Payer" elementType="Argument">
+              <stringProp name="Argument.name">paymentCif_Payer</stringProp>
+              <stringProp name="Argument.value">0002052120</stringProp>
+              <stringProp name="Argument.desc">&quot;0002052120 - vn-84-vly&quot;</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="paymentDetails" elementType="Argument">
+              <stringProp name="Argument.name">paymentDetails</stringProp>
+              <stringProp name="Argument.value">Jmeter Payment Details</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="paymentPayerFullName" elementType="Argument">
+              <stringProp name="Argument.name">paymentPayerFullName</stringProp>
+              <stringProp name="Argument.value">VALENTIN CONDREA</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="paymentDate" elementType="Argument">
+              <stringProp name="Argument.name">paymentDate</stringProp>
+              <stringProp name="Argument.value">2017-09-14</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="------------------------------------------" elementType="Argument">
+              <stringProp name="Argument.name">------------------------------------------</stringProp>
+              <stringProp name="Argument.value">------------------------------------------</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
           </collectionProp>
         </Arguments>
         <hashTree/>
@@ -167,7 +228,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="***${username}*** Dashboard - Product Summary" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="***${username}*** Dashboard - Product Summary" enabled="false">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
@@ -288,7 +349,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="***${username}*** Holds List" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="***${username}*** Holds List" enabled="false">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
@@ -404,7 +465,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="***${username}*** Get Cards V2" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="***${username}*** Get Cards V2" enabled="false">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -483,7 +544,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="***${username}*** Get transactions - CUSTOM ACCOUNT" enabled="false">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="***${username}*** Get transactions - CUSTOM ACCOUNT" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -492,7 +553,12 @@
                   <stringProp name="Argument.value">{&#xd;
 	&quot;accountId&quot;:&quot;${accIDcustom}&quot;,&#xd;
 	&quot;accountType&quot;:&quot;${accTypecustom}&quot;,&#xd;
-	&quot;size&quot;:&quot;${pageSize}&quot;&#xd;
+	&quot;filter&quot;:{&#xd;
+		&quot;includeDebitTransactions&quot;: true,&#xd;
+		&quot;includeCreditTransactions&quot;: true&#xd;
+		},&#xd;
+	&quot;size&quot;:&quot;${pageSize}&quot;,&#xd;
+	&quot;transactionStatusTypes&quot;:[&quot;SUCCESS&quot;, &quot;PENDING&quot;, &quot;HOLD&quot;, &quot;REJECTED&quot;]&#xd;
 	}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
