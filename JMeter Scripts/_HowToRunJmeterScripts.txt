@@ -10,7 +10,7 @@
 *******WITHOUT GUI*******
 1.Copy test file .jmx from JMeter Scripts to src\test\jmeter
 2.Open terminal
-3."mvn verify" OR "mvn verify -Dmaven.test.skip=true" to skip tests
+3."mvn verify" OR maven."mvn verify -Dtest.skip=true" to skip tests
 4.wait
 5.results will located at /JMeter Scripts/Test_results/testname.jtt/csv
 

@@ -30,7 +30,7 @@
           <collectionProp name="Arguments.arguments">
             <elementProp name="ENV" elementType="Argument">
               <stringProp name="Argument.name">ENV</stringProp>
-              <stringProp name="Argument.value">dev</stringProp>
+              <stringProp name="Argument.value">test</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
               <stringProp name="Argument.desc">dev or test</stringProp>
             </elementProp>
@@ -117,6 +117,21 @@
             <elementProp name="accType99" elementType="Argument">
               <stringProp name="Argument.name">accType99</stringProp>
               <stringProp name="Argument.value">99</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="------------------------------------------" elementType="Argument">
+              <stringProp name="Argument.name">------------------------------------------</stringProp>
+              <stringProp name="Argument.value">------------------------------------------</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="accCustomID" elementType="Argument">
+              <stringProp name="Argument.name">accCustomID</stringProp>
+              <stringProp name="Argument.value">5161502</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="accCustomType" elementType="Argument">
+              <stringProp name="Argument.name">accCustomType</stringProp>
+              <stringProp name="Argument.value">20</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>
@@ -213,6 +228,61 @@
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="***${username}*** Get transactions - Custom account and type" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;accountId&quot;:&quot;${accCustomID}&quot;,&#xd;
+	&quot;accountType&quot;:&quot;${accCustomType}&quot;,&#xd;
+	&quot;filter&quot;:{&#xd;
+		&quot;includeDebitTransactions&quot;: true,&#xd;
+		&quot;includeCreditTransactions&quot;: true&#xd;
+		},&#xd;
+	&quot;size&quot;:&quot;${pageSize}&quot;,&#xd;
+	&quot;transactionStatusTypes&quot;:[&quot;SUCCESS&quot;, &quot;PENDING&quot;, &quot;HOLD&quot;, &quot;REJECTED&quot;]&#xd;
+	}&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${WSvar}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">services/transactions-service/v1/transactions</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - Transaction list displayed" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="586227396">&quot;transactions&quot;:[{&quot;transactionId&quot;:&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - Status 200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
           </hashTree>
           <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Transactions Service &amp; BFF" enabled="true"/>
           <hashTree>
