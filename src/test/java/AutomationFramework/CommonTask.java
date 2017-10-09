@@ -216,4 +216,17 @@ public class CommonTask {
             return counterReflectsRemainingChars;
         }
 
+    public static void clickByJavascriptExecutor(WebDriver driver, WebElement element, String elementName){
+        try{
+            //Waiting for the element to be available
+            Waiting.elementToBeClickable(driver, element, elementName);
+            //Tap element
+            Log4Test.info("- Clicking element: "+ elementName);
+            JavascriptExecutor executor = (JavascriptExecutor)driver;
+            executor.executeScript("arguments[0].click();", element);
+        }
+        catch (NoSuchElementException e){
+            Assert.fail(Log4Test.error("Element is not found"));
+        }
+    }
 }

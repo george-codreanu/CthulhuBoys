@@ -39,6 +39,7 @@ public class TestData {
 
     public static final String LOGIN_GROUP = "Login";
     public static final String WESTERN_UNION_GROUP= "Western Union";
+    public static final String MY_CARDS_GROUP = "My cards";
 
     // -------------------------------------------------------------------- Western Union
     public static final String WESTERN_UNION = "Western Union";
