@@ -1,18 +1,20 @@
 package PageObjects.Frontend;
 
 import PageObjects.MainPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 
 public class FE_Transaction_List extends MainPage {
-
 
     public FE_Transaction_List(WebDriver passedDriver) {
         super(passedDriver);
     }
 
 
+    //-------------------------------------- String Locators
 
+    private String firstTransactionHistorySegment = "//*[@id=\"main\"]/div[3]/div/div/div[2]/div/div[1]/div[2]/div[3]/div/div/div/div/div/div[";
+    private String secondTransactionHistorySegment= "]/ui-raiffeisen-account-tile/div/div[4]/div[1]/a";
 
 
 
@@ -21,9 +23,17 @@ public class FE_Transaction_List extends MainPage {
 
     public void accessAccountHistory(String accountName){
 
-        System.out.println(driver.findElement(By.cssSelector("div.accountsList-group.ui-sortable > div:nth-of-type(1) > ui-raiffeisen-account-tile > div.accountItem-container > div.accountItem-name")).getAttribute("xpath"));
-
+        WebElement element = driver.findElement(By.xpath("//div[contains(text(),'"+ accountName +"')]"));
+        String xpathIndex = (String)((JavascriptExecutor)driver).executeScript("gPt=function(c){if(c.id!==''){return'id(\"'+c.id+'\")'}if(c===document.body){return c.tagName}var a=0;var e=c.parentNode.childNodes;for(var b=0;b<e.length;b++){var d=e[b];if(d===c){return gPt(c.parentNode)+'/'+c.tagName+'['+(a+1)+']'}if(d.nodeType===1&&d.tagName===c.tagName){a++}}};return gPt(arguments[0]).toLowerCase();", element);
+        xpathIndex = xpathIndex.substring(0,xpathIndex.length()-52);
+        xpathIndex = xpathIndex +"  ";
+        xpathIndex = xpathIndex.substring(106,108);
+        xpathIndex = xpathIndex.trim();
+        WebElement accountTransactionHistory = driver.findElement(By.xpath(firstTransactionHistorySegment + xpathIndex + secondTransactionHistorySegment));
+        System.out.println(accountTransactionHistory);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(accountTransactionHistory).build().perform();
+        accountTransactionHistory.click();
     }
 }
-
-//*[@id="main"]/div[3]/div/div/div[2]/div/div[1]/div[2]/div[3]/div/div/div/div/div/div[1]/ui-raiffeisen-account-tile/div/div[2]/div[2]
+//id("main")/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/ui-raiffeisen-account-tile[1]/div[1]/div[2]/div[2]
