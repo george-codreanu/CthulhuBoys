@@ -41,7 +41,7 @@
             </elementProp>
             <elementProp name="username" elementType="Argument">
               <stringProp name="Argument.name">username</stringProp>
-              <stringProp name="Argument.value">vn-84-vly</stringProp>
+              <stringProp name="Argument.value">alandala70</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="password" elementType="Argument">
@@ -56,7 +56,7 @@
             </elementProp>
             <elementProp name="accIDcustom" elementType="Argument">
               <stringProp name="Argument.name">accIDcustom</stringProp>
-              <stringProp name="Argument.value">5161502</stringProp>
+              <stringProp name="Argument.value">0018034098</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
               <stringProp name="Argument.desc">Account number for variaus calls -0013460268</stringProp>
             </elementProp>
@@ -77,12 +77,12 @@
             </elementProp>
             <elementProp name="paymentIBAN_FROM" elementType="Argument">
               <stringProp name="Argument.name">paymentIBAN_FROM</stringProp>
-              <stringProp name="Argument.value">RO63RZBR0000060005161502</stringProp>
+              <stringProp name="Argument.value">RO16RZBR0000010011532971</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="paymentIBAN_TO" elementType="Argument">
               <stringProp name="Argument.name">paymentIBAN_TO</stringProp>
-              <stringProp name="Argument.value">RO40RZBR0000060011185325</stringProp>
+              <stringProp name="Argument.value">RO24TREZ00220010101XXXXX</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="paymentCurrency" elementType="Argument">
@@ -488,7 +488,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="***${username}*** Get transactions - CUSTOM ACCOUNT" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="***${username}*** Get transactions - CUSTOM ACCOUNT" enabled="false">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -502,7 +502,7 @@
 		&quot;includeCreditTransactions&quot;: true&#xd;
 		},&#xd;
 	&quot;size&quot;:&quot;${pageSize}&quot;,&#xd;
-	&quot;transactionStatusTypes&quot;:[&quot;PENDING&quot;, &quot;HOLD&quot;, &quot;REJECTED&quot;]&#xd;
+	&quot;transactionStatusTypes&quot;:[&quot;SUCCESS&quot;, &quot;PENDING&quot;, &quot;HOLD&quot;, &quot;REJECTED&quot;]&#xd;
 	}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
