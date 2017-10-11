@@ -109,9 +109,9 @@
 //			   - page={page_no}&
 //			   - size={page_size}&
 //			   - accountId={account_id}&
-//			   - cardStatus={All|Active|Cancelled|Blocked}&                                                                               - default ALL
+//			   - cardStatus={All|Active|Cancelled|Blocked}& - default ALL
 //			   - clientType={PF|PJ}&
-//			   - sourceApplication={IBK}                                                                                                  - default IBK and only supported
+//			   - sourceApplication={IBK}  - default IBK and only supported
 //			   - verify status
 //			   - verify response according with param
 //			   - extract accID & cardID
@@ -202,7 +202,7 @@ public class Device {
 					"searchInDescriptionOnly" : true/false,*/
 //					"includeDebitTransactions" : true/false,
 //					"includeCreditTransactions" : true/false}
-//		    - test transactionStatusTypes                                                                                              - array containing at least one of the following possible values: SUCCESS, PENDING, HOLD, REJECTED
+//		    - test transactionStatusTypes   - array containing at least one of the following possible values: SUCCESS, PENDING, HOLD, REJECTED
 
 //POST services/transactions-bff/v1/pending-rejected-transaction
 //			   - verify status
@@ -480,12 +480,12 @@ GET /eligibilityRestrictions/{paymentActionId}/{accountType}
         - verify pendingActionIds
         - extract pendingActionIds */
 
-3. Payment status: GET /pending-action/status/{id}
+/*3. Payment status: GET /pending-action/status/{id}
 
         - verify status 200
-        - verify response
+        - verify response*/
 
-4. Delete active payment: DELETE /active-payment
+/*4. Delete active payment: DELETE /active-payment
 
                 {
                     "activePayments": [
@@ -505,9 +505,9 @@ GET /eligibilityRestrictions/{paymentActionId}/{accountType}
                 }
 
             - verify status 200
-            - verify response 
+            - verify response */
 
-5. Clasify payment: POST /classify-payment
+/*5. Clasify payment: POST /classify-payment
 
                 {
                     "fromAccount": {
@@ -527,31 +527,31 @@ GET /eligibilityRestrictions/{paymentActionId}/{accountType}
                 }
 
             - verify status 200
-            - verfiy action id for each action type
+            - verfiy action id for each action type*/
 
-6. Payment currencies: GET /currencies
+/*6. Payment currencies: GET /currencies
 
             - verify status 200
-            - verify responsy body ["EUR","USD","GBP","AUD","CAD","CHF","DKK","HUF","JPY","NOK","PLN","RON","SEK","BGN"]
+            - verify responsy body ["EUR","USD","GBP","AUD","CAD","CHF","DKK","HUF","JPY","NOK","PLN","RON","SEK","BGN"]*/
 
-7. Search: GET /search?query={search string}
+/*7. Search: GET /search?query={search string}
 
             - verify stsatus 200 
             - verify response not empty 
-            - verify fi search returns correctly
+            - verify fi search returns correctly*/
 
-8. Validate BIC: GET /validate-bic/{BIC CODE}
+/*8. Validate BIC: GET /validate-bic/{BIC CODE}
 
             - verfiry status 200
             - verify corerct BIC corerct
-            - verift incorect BIC
+            - verift incorect BIC*/
 
-9. Western union input page prerequisites: GET /western-union/prerequisites
+/*9. Western union input page prerequisites: GET /western-union/prerequisites
 
             - verify status 200
-            - verify content 
+            - verify content */
 
-10. Western Union confirm receive money: POST /western-union/receive-money
+/*10. Western Union confirm receive money: POST /western-union/receive-money
 
                 {
                     "MTCN":"1200538130",
@@ -564,7 +564,7 @@ GET /eligibilityRestrictions/{paymentActionId}/{accountType}
                 }
 
             - verify status 200
-            - verify response
+            - verify response*/
 
 11. Get Taxes prerequisites: GET /taxes-prerequisites
 
@@ -580,3 +580,4 @@ GET /eligibilityRestrictions/{paymentActionId}/{accountType}
 
             - verify status 200
             - verify response based on params 
+

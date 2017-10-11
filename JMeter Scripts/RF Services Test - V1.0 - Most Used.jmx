@@ -56,9 +56,9 @@
             </elementProp>
             <elementProp name="accIDcustom" elementType="Argument">
               <stringProp name="Argument.name">accIDcustom</stringProp>
-              <stringProp name="Argument.value">0013460268</stringProp>
+              <stringProp name="Argument.value">5161502</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
-              <stringProp name="Argument.desc">Account number for variaus calls</stringProp>
+              <stringProp name="Argument.desc">Account number for variaus calls -0013460268</stringProp>
             </elementProp>
             <elementProp name="accTypecustom" elementType="Argument">
               <stringProp name="Argument.name">accTypecustom</stringProp>
@@ -226,62 +226,6 @@
               <boolProp name="Assertion.assume_success">false</boolProp>
               <intProp name="Assertion.test_type">16</intProp>
             </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="***${username}*** Dashboard - Product Summary" enabled="false">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-              <collectionProp name="Arguments.arguments"/>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${WSvar}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">portalserver/services/rest/v2/productsummary</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - Current accounts displayed" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="-2020533167">&quot;currentAccounts&quot;:{&quot;name&quot;:&quot;Current Account&quot;,&quot;products&quot;:[{&quot;</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - Status 200" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49586">200</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="accID1" enabled="true">
-              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-              <stringProp name="RegexExtractor.refname">accID1</stringProp>
-              <stringProp name="RegexExtractor.regex">&quot;accountId&quot;:&quot;(.+?)&quot;</stringProp>
-              <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default">0</stringProp>
-              <stringProp name="RegexExtractor.match_number">1</stringProp>
-            </RegexExtractor>
-            <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="accType1" enabled="true">
-              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-              <stringProp name="RegexExtractor.refname">accType1</stringProp>
-              <stringProp name="RegexExtractor.regex">&quot;accountTypeId&quot;:&quot;(.+?)&quot;</stringProp>
-              <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default">0</stringProp>
-              <stringProp name="RegexExtractor.match_number">1</stringProp>
-            </RegexExtractor>
             <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="***${username}*** Dashboard - Accounts List" enabled="true">
@@ -558,7 +502,7 @@
 		&quot;includeCreditTransactions&quot;: true&#xd;
 		},&#xd;
 	&quot;size&quot;:&quot;${pageSize}&quot;,&#xd;
-	&quot;transactionStatusTypes&quot;:[&quot;SUCCESS&quot;, &quot;PENDING&quot;, &quot;HOLD&quot;, &quot;REJECTED&quot;]&#xd;
+	&quot;transactionStatusTypes&quot;:[&quot;PENDING&quot;, &quot;HOLD&quot;, &quot;REJECTED&quot;]&#xd;
 	}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
