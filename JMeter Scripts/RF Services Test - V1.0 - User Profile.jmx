@@ -41,7 +41,7 @@
             </elementProp>
             <elementProp name="username" elementType="Argument">
               <stringProp name="Argument.name">username</stringProp>
-              <stringProp name="Argument.value">vn-84-vly</stringProp>
+              <stringProp name="Argument.value">testpf01</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="password" elementType="Argument">
@@ -570,7 +570,7 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <RecordingController guiclass="RecordController" testclass="RecordingController" testname="User Profile - upload avatar" enabled="true"/>
+          <RecordingController guiclass="RecordController" testclass="RecordingController" testname="User Profile - upload avatar" enabled="false"/>
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
