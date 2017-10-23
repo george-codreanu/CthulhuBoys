@@ -566,18 +566,44 @@ GET /eligibilityRestrictions/{paymentActionId}/{accountType}
             - verify status 200
             - verify response*/
 
-11. Get Taxes prerequisites: GET /taxes-prerequisites
+/*11. Get Taxes prerequisites: GET /taxes-prerequisites
 
             - verify status 200
-            - verify content 
+            - verify content */
 
-12. Get Taxes list: GET /search/taxes-beneficiaries?type={beneficiaryType}&query={beneficiaryQuery}
+/*12. Get Taxes list: GET /search/taxes-beneficiaries?type={beneficiaryType}&query={beneficiaryQuery}
 
             - verfiy status 200
-            - verify response based on search
+            - verify response based on search*/
 
-13. Active payments Instances: GET /active-payment/{activePaymentId}/instances?startFrom={startFrom}&maxRows={maxRows}
+/*13. Active payments Instances: GET /active-payment/{activePaymentId}/instances?startFrom={startFrom}&maxRows={maxRows}
 
             - verify status 200
-            - verify response based on params 
+            - verify response based on params */
 
+
+/*14 . GET services/accounts-ws/v1/accounts/eligibility/own
+
+            - verify status 200
+            - verify response not empty*/
+
+//15. Payments based on eligibility 
+
+        //    - 20 - 20 =
+        //    - 20 - 20 <>
+        //    - 20 - 26 =
+       //     - 20 - 26 <>
+       //     - 20 - 30 =
+       //     - 20 - 30 <>
+       //     - 26 - 20 =
+       //     - 26 - 20 <>
+       //     - 26 - 26 =
+       //     - 26 - 26 <>
+       //     - 26 - 30 =
+       //     - 26 - 30 <>
+         //   - 30 - 20 =
+         //   - 30 - 20 <>
+      //      - 30 - 26 =
+       //     - 30 - 26 <>
+       //     - 30 - 30 =
+       //     - 30 - 30 <>
