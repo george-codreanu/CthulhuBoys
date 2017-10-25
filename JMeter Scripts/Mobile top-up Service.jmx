@@ -54,163 +54,6 @@
               <stringProp name="Argument.value">------------------------------------------</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
-            <elementProp name="accIDcustom" elementType="Argument">
-              <stringProp name="Argument.name">accIDcustom</stringProp>
-              <stringProp name="Argument.value">0013460268</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-              <stringProp name="Argument.desc">Account number for variaus calls</stringProp>
-            </elementProp>
-            <elementProp name="accTypecustom" elementType="Argument">
-              <stringProp name="Argument.name">accTypecustom</stringProp>
-              <stringProp name="Argument.value">20</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="pageSize" elementType="Argument">
-              <stringProp name="Argument.name">pageSize</stringProp>
-              <stringProp name="Argument.value">9999</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="------------------------------------------" elementType="Argument">
-              <stringProp name="Argument.name">------------------------------------------</stringProp>
-              <stringProp name="Argument.value">------------------------------------------</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="testIBAN" elementType="Argument">
-              <stringProp name="Argument.name">testIBAN</stringProp>
-              <stringProp name="Argument.value">RO49AAAA1B31007593840000</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="------------------------------------------" elementType="Argument">
-              <stringProp name="Argument.name">------------------------------------------</stringProp>
-              <stringProp name="Argument.value">------------------------------------------</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="fromCurrency" elementType="Argument">
-              <stringProp name="Argument.name">fromCurrency</stringProp>
-              <stringProp name="Argument.value">RON</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="toCurrency" elementType="Argument">
-              <stringProp name="Argument.name">toCurrency</stringProp>
-              <stringProp name="Argument.value">EUR</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="------------------------------------------" elementType="Argument">
-              <stringProp name="Argument.name">------------------------------------------</stringProp>
-              <stringProp name="Argument.value">------------------------------------------</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="BIC_CODE" elementType="Argument">
-              <stringProp name="Argument.name">BIC_CODE</stringProp>
-              <stringProp name="Argument.value">RZBRROBU</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="------------------------------------------" elementType="Argument">
-              <stringProp name="Argument.name">------------------------------------------</stringProp>
-              <stringProp name="Argument.value">------------------------------------------</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="paymentIBAN_FROM" elementType="Argument">
-              <stringProp name="Argument.name">paymentIBAN_FROM</stringProp>
-              <stringProp name="Argument.value">RO63RZBR0000060005161502</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="paymentIBAN_TO" elementType="Argument">
-              <stringProp name="Argument.name">paymentIBAN_TO</stringProp>
-              <stringProp name="Argument.value">RO40RZBR0000060011185325</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="paymentCurrency" elementType="Argument">
-              <stringProp name="Argument.name">paymentCurrency</stringProp>
-              <stringProp name="Argument.value">RON</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="paymentCurrency_FROM" elementType="Argument">
-              <stringProp name="Argument.name">paymentCurrency_FROM</stringProp>
-              <stringProp name="Argument.value">RON</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="paymentCurrency_TO" elementType="Argument">
-              <stringProp name="Argument.name">paymentCurrency_TO</stringProp>
-              <stringProp name="Argument.value">EUR</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="paymentActionID" elementType="Argument">
-              <stringProp name="Argument.name">paymentActionID</stringProp>
-              <stringProp name="Argument.value">0003</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="paymentAmount" elementType="Argument">
-              <stringProp name="Argument.name">paymentAmount</stringProp>
-              <stringProp name="Argument.value">1.0</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="paymentCif_Payer" elementType="Argument">
-              <stringProp name="Argument.name">paymentCif_Payer</stringProp>
-              <stringProp name="Argument.value">0002052120</stringProp>
-              <stringProp name="Argument.desc">&quot;0002052120 - vn-84-vly&quot;</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="paymentDetails" elementType="Argument">
-              <stringProp name="Argument.name">paymentDetails</stringProp>
-              <stringProp name="Argument.value">Jmeter Payment Details</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="paymentPayerFullName" elementType="Argument">
-              <stringProp name="Argument.name">paymentPayerFullName</stringProp>
-              <stringProp name="Argument.value">VALENTIN CONDREA</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="paymentDate" elementType="Argument">
-              <stringProp name="Argument.name">paymentDate</stringProp>
-              <stringProp name="Argument.value">2017-09-14</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="------------------------------------------" elementType="Argument">
-              <stringProp name="Argument.name">------------------------------------------</stringProp>
-              <stringProp name="Argument.value">------------------------------------------</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="wuMTCN" elementType="Argument">
-              <stringProp name="Argument.name">wuMTCN</stringProp>
-              <stringProp name="Argument.value">1413412414</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="wuAccount" elementType="Argument">
-              <stringProp name="Argument.name">wuAccount</stringProp>
-              <stringProp name="Argument.value">0005161502</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="wuAccountType" elementType="Argument">
-              <stringProp name="Argument.name">wuAccountType</stringProp>
-              <stringProp name="Argument.value">20</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="wuExpectedAmount" elementType="Argument">
-              <stringProp name="Argument.name">wuExpectedAmount</stringProp>
-              <stringProp name="Argument.value">563.00</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="wuExpectedCurrency" elementType="Argument">
-              <stringProp name="Argument.name">wuExpectedCurrency</stringProp>
-              <stringProp name="Argument.value">RON</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="wuOriginationCountry" elementType="Argument">
-              <stringProp name="Argument.name">wuOriginationCountry</stringProp>
-              <stringProp name="Argument.value">GER</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="wuProductId" elementType="Argument">
-              <stringProp name="Argument.name">wuProductId</stringProp>
-              <stringProp name="Argument.value">547</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="------------------------------------------" elementType="Argument">
-              <stringProp name="Argument.name">------------------------------------------</stringProp>
-              <stringProp name="Argument.value">------------------------------------------</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
           </collectionProp>
         </Arguments>
         <hashTree/>
@@ -342,7 +185,7 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Mobile top-up Service" enabled="false"/>
+          <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Mobile top-up Service" enabled="true"/>
           <hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="***${username}*** Get Mobile Operators Catalog" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -375,6 +218,24 @@
                   <stringProp name="49586">200</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">16</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - isInWorkingHours" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-1090626579">isInWorkingHours</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">16</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - providerName" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-419261412">providerName</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
                 <intProp name="Assertion.test_type">16</intProp>
               </ResponseAssertion>
