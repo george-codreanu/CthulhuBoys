@@ -150,28 +150,6 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>com.lazerycode.jmeter</groupId>
-                        <artifactId>jmeter-maven-plugin</artifactId>
-                        <version>2.2.0</version>
-                        <executions>
-                            <execution>
-                                <id>jmeter-tests</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>jmeter</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <overrideRootLogLevel>debug</overrideRootLogLevel>
-                            <ignoreResultFailures>true</ignoreResultFailures>
-                            <testFilesDirectory>src/test/jmeter</testFilesDirectory>
-                            <resultsFileNameDateFormat>YYY_MM_DD</resultsFileNameDateFormat>
-                            <resultsDirectory>JMeter Scripts/Test_results</resultsDirectory>
-                            <resultsFileFormat>csv</resultsFileFormat>
-                        </configuration>
-                    </plugin>
-                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
                         <configuration>
